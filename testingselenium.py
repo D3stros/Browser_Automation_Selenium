@@ -17,6 +17,8 @@ class has_css_class(object):
         else:
             return False
 
+options = webdriver.ChromeOptions()
+options.add_argument("user-data-dir=/path/to/profile")
 driver = webdriver.Chrome()
 driver.get('https://www.google.com/xhtml')
 
