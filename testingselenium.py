@@ -19,12 +19,12 @@ class has_css_class(object):
 
 driver = webdriver.Chrome()
 driver.get('https://www.google.com/xhtml')
-try:
-    element = WebDriverWait(driver, 5).until(
-        has_css_class((By.NAME, "q"), "gsfi")
-    )
-    element.send_keys("google")
-    time.sleep(3)
-finally:
-    driver.quit()
+
+from selenium.webdriver import ActionChains
+ac = ActionChains(driver)
+driver.find_element_by_id('gb_70').click()
+ac.click_and_hold(driver.find_element_by_class_name('snByac'))
+ac.move_to_element(driver.find_element_by_name('identifier'))
+ac.perform()
+
 
